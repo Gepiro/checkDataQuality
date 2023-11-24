@@ -1,0 +1,4 @@
+raw_data:
+  class: Directory
+  location: input/ 
+threads: 5
