@@ -1,4 +1,7 @@
 raw_data:
   class: Directory
-  location: input/ 
+  location: input 
 threads: 5
+file:
+  class: File
+  path: input/1003-FFPE_S6_L001_R1_001.fastq.gz
