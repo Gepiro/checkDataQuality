@@ -19,12 +19,15 @@ outputs:
     outputSource: multiqc/multiqc_html
 
 steps:  
+  zerothstep:
+    run: cwl/zerothStep.cwl
+    in:
+      dir: raw_data
+    out: [reads]
   fastqc:
     run: cwl/fastqc.cwl
     in:
-      raw_data: 
-        source: raw_data
-        valueFrom: $(self.listing) 
+      raw_data: zerothstep/reads 
       threads: threads
     out: [fastqc_zip]
   multiqc:

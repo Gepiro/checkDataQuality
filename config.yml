@@ -1,6 +1,6 @@
 raw_data:
   class: Directory
-  location: input 
+  location: ./input 
 threads: 5
 file:
   class: File

@@ -6,3 +6,31 @@ workflows:
     config:
       file: workflow.cwl
       settings: config.yml
+    bindings:
+      - step: /fastqc
+        target:
+          deployment: slurm-fastqc
+          workdir: /beegfs/home/scontald/sf_tmp
+      - step: /multiqc
+        target:
+          deployment: slurm-multiqc
+          workdir: /beegfs/home/scontald/sf_tmp
+
+
+deployments:
+  slurm-fastqc:
+    type: slurm
+    config:
+      hostname: c3sfr1.di.unito.it
+      username: scontald
+      sshKey: ~/.ssh/id_rsa  
+      maxConcurrentJobs: 5 
+      file: ./sbatch/fastqc.sh
+  slurm-multiqc:
+    type: slurm
+    config:
+      hostname: c3sfr1.di.unito.it
+      username: scontald
+      sshKey: ~/.ssh/id_rsa  
+      maxConcurrentJobs: 5 
+      file: ./sbatch/multiqc.sh
